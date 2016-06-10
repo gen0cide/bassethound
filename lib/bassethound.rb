@@ -6,7 +6,7 @@ module Bassethound
   class Lookup
     def initialize(email)
       @address = email.chomp
-      @domain = address.split('@').last
+      @domain = @address.split('@').last
       @dns = ::Resolv::DNS.new
       @mx_r = @dns.getresources @domain, ::Resolv::DNS::Resource::IN::MX
       @mx_s = @mx_r.first.exchange.to_s
